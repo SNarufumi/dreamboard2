@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
 
@@ -36,6 +36,19 @@ Rails.application.configure do
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
+  #メール認証のリンクをはる。
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => " my.intern2015.10.12@gmail.com", #ご自身のgmailアドレス
+    :password => "Murakamiharuki1984", #ご自身のgmailアドレスのパスワード
+    :authentication => 'login'
+  }
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
