@@ -2,17 +2,18 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-  <div class="container">
-  <ul class="content">
-    <% @posts.each do |post| %>
-        <li>
-          <h2 class="main-text"><%= link_to post.content, post_path(post)%></h2>
-          <p class="identity">
-            <span><%= post.user.age %></span><span><%= post.user.job %></span>
-          </p>
-        </li>
-    <% end %>
-     </ul>
+  <div id="container">
+      <% @posts.each do |post| %>
+        <ul class="content">
+          <li>
+            <h2 class="main-text"><%= link_to post.content, post_path(post)%></h2>
+            <p class="identity">
+              <span><%= post.user.age %></span><span><%= post.user.job %></span>
+            </p>
+          </li>
+          </ul>
+      <% end %>
+       
   </div>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),

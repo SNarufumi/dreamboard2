@@ -5,13 +5,13 @@
            };  
    
       // 要素の取得
-      var $container = $('.container'),
-          $wordList = $('.content').find('li'),
+      var $container = $('#container'),
+          $wordList = $('#content').find('li'),
           containerWidth = $container.width(),
           containerHeight = $container.height();
 
       console.log(containerWidth, containerHeight) //960px,500vh
-
+      // console.log($container.length)
       // liそれぞれをランダムに配置
       $.map($wordList, function(item, index) {
         var $item = $(item), // wordListのcontent要素が1番目から順に入ってきます
