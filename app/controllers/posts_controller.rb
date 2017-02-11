@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :set_status, only:[:new, :edit]
 
 
-  # GET /posts
+# GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
@@ -75,14 +75,14 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      # params.require(:post).permit(:content , :user_id)
+      params.require(:post).permit(:content,:user_id,:image,:goods_name,:categories,:status,:price)
     end
 
     # 出品フォームでカテゴリーのselectプルダウンメニューをdbから引っ張ってくる際に渡す値
     def set_category
       @categories = Category.all
     end
-    # 出品フォームの商品の状態のプスダウンメニューをdbから引っ張ってきます。  
+    # # 出品フォームの商品の状態のプスダウンメニューをdbから引っ張ってきます。  
     def set_status
       @fades = Fade.all
     end
