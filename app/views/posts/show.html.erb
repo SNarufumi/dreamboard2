@@ -3,11 +3,26 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
-  <dd><%= @post.content %></dd>
-</dl>
+<div class="content-wrap">
+  <h1><%=@post.goods_name%></h1>
+  <p><%=@post.content%></p>
+  <%= image_tag @post.image.url%>
 
+  <table border="1">
+    <tr>
+      <th>出品者</th>
+  	  <td><%=@post.user.name%></td>
+    </tr>
+    <tr>
+      <th>カテゴリー</th>
+  	  <td><%-@post.categories%><s/td>
+    </tr>
+    <tr>
+      <th>商品の状態</th>
+  	  <td></td>
+    </tr>
+  </table>
+</div>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               posts_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
