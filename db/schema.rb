@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20170212094043) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -28,16 +27,7 @@ ActiveRecord::Schema.define(version: 20170212094043) do
     t.integer  "category_id"
     t.integer  "status_id"
     t.integer  "price"
-
     t.integer  "user_id"
-    t.string   "image"
-    t.string   "goods_name"
-    t.text     "goods_description"
-    t.string   "categories"
-    t.string   "status"
-    t.integer  "price"
-    t.string   "statuses"
-    t.         "fades"
   end
 
   create_table "statuses", force: :cascade do |t|
