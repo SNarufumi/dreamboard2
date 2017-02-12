@@ -1,11 +1,34 @@
 <%- model_class = Post -%>
 <div class="page-header">
+
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
+  <h3><%= @post.name%></h3>
+  <%= image_tag @post.image.url %>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @post.description %></dd>
+
+  	
+  <table border="1">
+    <tr>
+      <th>出品者</th>
+	  <td><%= @post.user.name %></td>
+	</tr>
+	<tr>
+	  <th>カテゴリー</th>
+	  <td><%= @post.category.name %><s/td>
+	</tr>
+	<tr>
+	  <th>商品の状態</th>
+	  <td><%= @post.status.name %></td>
+	</tr>
+   </table>
+
+   <div class="price-box">
+     ¥<%= @post.price%>
+   </div>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -17,3 +40,6 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+
+           
+
