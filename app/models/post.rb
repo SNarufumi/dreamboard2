@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
-	validates :user_id, presence: true
-	belongs_to:user
 	mount_uploader :image, ImageUploader
+	belongs_to:user
+	has_one:category, dependent: :destroy
+	has_one:status, dependent: :destroy
 end

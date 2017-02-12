@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :new]
+  before_action :set_status, only: [:show, :edit, :update, :new]
   before_action :authenticate_user!, except: [:index]
   before_action :set_category, only:[:new, :edit]
   before_action :set_status, only:[:new, :edit]
@@ -75,15 +77,16 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content , :user_id ,:image ,:goods_name ,:categories ,:price)
-    end
 
+      params.require(:post).permit(:image ,:description ,:category_id ,:status_id ,:price ,:user_id ,:name)
+    end
+    
     # 出品フォームでカテゴリーのselectプルダウンメニューをdbから引っ張ってくる際に渡す値
     def set_category
       @categories = Category.all
     end
     # # 出品フォームの商品の状態のプスダウンメニューをdbから引っ張ってきます。  
     def set_status
-      @fades = Fade.all
+      @statuses = Status.all
     end
 end
