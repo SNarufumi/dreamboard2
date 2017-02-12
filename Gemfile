@@ -59,5 +59,8 @@ end
   gem 'devise' #ログイン機能の実装
   gem 'carrierwave'
   gem 'rmagick'
+  gem 'therubyracer'
+  gem 'font-awesome-rails'
+  gem 'bootstrap-sass'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
