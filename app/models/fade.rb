@@ -1,0 +1,2 @@
+class Fade < ApplicationRecord
+end

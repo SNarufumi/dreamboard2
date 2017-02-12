@@ -49,6 +49,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
   gem 'hirb'
+  gem 'carrierwave'
+  gem 'rmagick'
 
   gem 'therubyracer' # javascript runtime。lessをコンパイルするために必要
   gem 'less-rails' # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため

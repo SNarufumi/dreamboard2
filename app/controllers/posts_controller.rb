@@ -3,9 +3,11 @@ class PostsController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :new]
   before_action :set_status, only: [:show, :edit, :update, :new]
   before_action :authenticate_user!, except: [:index]
+  before_action :set_category, only:[:new, :edit]
+  before_action :set_status, only:[:new, :edit]
 
 
-  # GET /posts
+# GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
@@ -20,6 +22,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+
   end
 
   # GET /posts/1/edit
@@ -74,9 +77,11 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
+
       params.require(:post).permit(:image ,:description ,:category_id ,:status_id ,:price ,:user_id ,:name)
     end
-     # 出品フォームでカテゴリーのselectプルダウンメニューをdbから引っ張ってくる際に渡す値
+    
+    # 出品フォームでカテゴリーのselectプルダウンメニューをdbから引っ張ってくる際に渡す値
     def set_category
       @categories = Category.all
     end
