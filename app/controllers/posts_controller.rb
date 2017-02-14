@@ -11,12 +11,12 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @categories = Category.all
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    
   end
 
   # GET /posts/new
