@@ -4,16 +4,26 @@
 </div>
 
 <div class="content-wrap clearfix">
-  <% @posts.each do |post| %>
-    <div class="item-wrap">
-      <%= image_tag post.image.url %>
-      <h3><%= post.name %></h3>
-      <div class="item-price">¥<%= post.price %></div>
-      <div class="detail-btn"><%= link_to '詳細を見る' , post_path(post.id) , :class=> 'btn btn-danger btn-xs' %></div>
+  <% @categories.each do |category| %>
+    <h3><%= link_to category.name, categories_path(category.id) %></h3>
+    <div class="item-box-content clearfix">
+      <% category.post.each do |post| %>
+          <div class="item-wrap">
+              <%= image_tag post.image.url %>
+              <h3><%= post.name %></h3>
+              <div class="item-price">¥<%= post.price %></div>
+              <div class="detail-btn"><%= link_to '詳細を見る' , post_path(post.id) , :class=> 'btn btn-danger btn-xs' %></div>
+           </div>
+      <%end%>
     </div>
   <%end%>
-</div>
-
+    
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_post_path,
-            :class => 'btn btn-primary' %>
+           :class => 'btn btn-primary' %>
+
+
+
+
+
+
