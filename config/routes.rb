@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :books
-  devise_for :users
+  resources :books do 
+  	resource :favorites, only: [:create, :destroy]
+  end
+  devise_for :users 
   root 'posts#index'
   
   resources :posts

@@ -4,6 +4,7 @@
   <%= image_tag @book.image.url %>
   <%= @book.user.name %>
   <%= @book.content %>
+  <%= link_to "いいね", book_favorites_path(@book), method: :post %>
 </div>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
