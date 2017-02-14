@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<div class="mypage-wrap">
+  <%= image_tag @book.image.url %>
+  <%= @book.user.name %>
+  <%= @book.content %>
+</div>
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :books
   devise_for :users
   root 'posts#index'
   
-  resources :books
   resources :posts
   resources :users
   get '/categories/:id' => 'categories#show' , :as => :categories
