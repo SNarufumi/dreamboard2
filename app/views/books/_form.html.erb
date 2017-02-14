@@ -1,0 +1,12 @@
+<%= simple_form_for @book, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :image ,label:"画像" %>
+  <%= f.input :content ,label:"自己紹介" ,placeholder:"マイページに表示される自己紹介文です。（最大２００字まで）" ,maxlenth:40, as: :text %>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+
+
+  <div class="form-actions">
+    <%= f.submit "保存", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                posts_path, :class => 'btn' %>
+  </div>
+<% end %>

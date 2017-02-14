@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :books do 
+  	resource :favorites, only: [:create, :destroy]
+  end
+  devise_for :users 
   root 'posts#index'
   
-  resources :books
   resources :posts
   resources :users
   get '/categories/:id' => 'categories#show' , :as => :categories
