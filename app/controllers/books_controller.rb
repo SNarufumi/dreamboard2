@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only:[:new,:edit,:update,:destroy]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+   before_action :correct_user, only: [:edit, :update]
 
   # GET /books
   # GET /books.json
@@ -11,6 +13,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @favorites = Favorite.where(book_id: params[:id])
+    
   end
 
   # GET /books/new
@@ -71,5 +74,11 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
        params.require(:book).permit(:content, :image ,:user_id)
+    end
+    def correct_user
+          book = Book.find(params[:id])
+          if current_user.id != book.user.id
+            redirect_to root_path
+          end
     end
 end

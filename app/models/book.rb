@@ -8,4 +8,8 @@ class Book < ApplicationRecord
      favorites.find_by(user_id: user)
   end
 
+  def addmypage_by? user
+    books.where(user_id: user.id).exists?
+  end
+
 end
