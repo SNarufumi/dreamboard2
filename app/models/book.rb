@@ -3,7 +3,9 @@ class Book < ApplicationRecord
 	belongs_to:user
 	has_many :favorites, dependent: :destroy
 
-	def favorited_by? user
-    favorites.where(user_id: user.id).exists?
-    end
+    # いいねは一回しかできない、その投稿にいいねしてイルカどうか判定する
+    def like_user(user)
+     favorites.find_by(user_id: user)
+  end
+
 end
