@@ -90,4 +90,10 @@ class PostsController < ApplicationController
     def set_status
       @statuses = Status.all
     end
+    def correct_user
+          post = Post.find(params[:id])
+          if current_user.id != post.user.id
+            redirect_to root_path
+          end
+    end
 end

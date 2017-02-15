@@ -2,21 +2,11 @@
 
 <div class="mypage-wrap">
   <%= image_tag @book.image.url %>
-  <%= @book.user.name %>
+  <h3><%= @book.user.name %></h3>
   <%= @book.content %>
-  <!-- いいねボタン -->
-  <% if @book.like_user(current_user) %>
-   <div id="like-button">
-     <%= image_tag("like.png") %>
-     <%= likes_counter(@favorites) %>
-   </div>
-  <% else %>
-   <div id="like-button">
-     <%= image_tag("unlike.png") %>
-     <div id="like-sum"><%= likes_counter(@favorites) %></div>
-  </div>
-<% end %>
-
-</div>
+ 
+<% if current_user.id == @book.user_id %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to 'Back', book_path %>
+<%= link_to 'Delete', book_path , method: :delete %>
+<%end%>
